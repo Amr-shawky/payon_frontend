@@ -133,4 +133,38 @@ export class MockDataService {
 
   // ── Account Types ──────────────────────────────────────────────
   getAccountTypes() { return of(MOCK_ACCOUNT_TYPES).pipe(delay(300)); }
+
+  // ── Blockchain / Virtual Card (mock) ───────────────────────────
+  createWallet(accountId: string) {
+    const wallet = { walletId: 'w_' + Date.now(), address: 'mock_' + Math.random().toString(36).substr(2, 12), currency: 'XRP' };
+    return of(wallet).pipe(delay(300));
+  }
+
+  getWalletBalance(walletId: string) {
+    const balance = { walletId, balance: 1000.0, currency: 'XRP' };
+    return of(balance).pipe(delay(300));
+  }
+
+  sendTransaction(fromWalletId: string, toAddress: string, amount: number, currency = 'XRP') {
+    const tx = { transactionId: 'tx_' + Date.now(), from: fromWalletId, to: toAddress, amount, currency, status: 'confirmed' };
+    return of(tx).pipe(delay(400));
+  }
+
+  issueCard(accountId: string, name: string, limit = 1000) {
+    const card = { cardId: 'c_' + Date.now(), cardNumber: '4111' + Math.floor(100000000 + Math.random() * 900000000), expiry: '12/28', cvv: '' + Math.floor(100 + Math.random() * 900), limit, isLocked: false };
+    return of(card).pipe(delay(400));
+  }
+
+  getCard(cardId: string) {
+    const card = { cardId, cardNumber: '4111xxxxxxxxxxxx', expiry: '12/28', cvv: '123', limit: 1000, isLocked: false };
+    return of(card).pipe(delay(300));
+  }
+
+  lockCard(cardId: string) {
+    return of(true).pipe(delay(200));
+  }
+
+  unlockCard(cardId: string) {
+    return of(true).pipe(delay(200));
+  }
 }

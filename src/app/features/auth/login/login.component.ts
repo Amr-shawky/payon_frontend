@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
+import { IconComponent } from '../../../shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, IconComponent],
   template: `
     <div class="login-page">
       <!-- Left Panel -->
@@ -49,7 +50,7 @@ import { AuthService } from '../../../core/services/auth.service';
 
         <div class="feature-list">
           <div class="feature-item" *ngFor="let f of features">
-            <span class="f-icon">{{ f.icon }}</span>
+            <span class="f-icon"><app-icon [name]="f.icon"/></span>
             <span>{{ f.text }}</span>
           </div>
         </div>
@@ -224,11 +225,11 @@ export class LoginComponent {
   error = '';
 
   features = [
-    { icon: '📊', text: 'Real-time transaction monitoring & analytics' },
-    { icon: '🔐', text: 'Complete audit trail with MongoDB log storage' },
-    { icon: '⚙️', text: 'Full financial configuration (commissions, limits)' },
-    { icon: '👥', text: 'User & account lifecycle management' },
-    { icon: '🌍', text: 'Multi-currency & multi-country support' },
+    { icon: 'chart', text: 'Real-time transaction monitoring & analytics' },
+    { icon: 'lock', text: 'Complete audit trail with MongoDB log storage' },
+    { icon: 'settings', text: 'Full financial configuration (commissions, limits)' },
+    { icon: 'users', text: 'User & account lifecycle management' },
+    { icon: 'globe', text: 'Multi-currency & multi-country support' },
   ];
 
   constructor(private auth: AuthService, private router: Router) {

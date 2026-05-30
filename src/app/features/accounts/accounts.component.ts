@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MockDataService } from '../../core/services/mock-data.service';
 import { AccountDetailsList } from '../../core/models/models';
+import { IconComponent } from '../../shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-accounts',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, IconComponent],
   template: `
     <div class="page-header">
       <div class="page-title">
@@ -21,7 +22,7 @@ import { AccountDetailsList } from '../../core/models/models';
 
     <div class="filters-bar">
       <div class="search-input filter-item">
-        <input class="form-control" [(ngModel)]="search" (ngModelChange)="onSearch()" placeholder="🔍  Search by IPA, user, currency..."/>
+        <input class="form-control" [(ngModel)]="search" (ngModelChange)="onSearch()" placeholder="Search by IPA, user, currency..."/>
       </div>
       <div class="filter-item">
         <select class="form-control" [(ngModel)]="filterState" (change)="onSearch()">

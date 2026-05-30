@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MockDataService } from '../../core/services/mock-data.service';
 import { UserResponse } from '../../core/models/models';
+import { IconComponent } from '../../shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, IconComponent],
   template: `
     <div class="page-header">
       <div class="page-title">
@@ -23,7 +24,7 @@ import { UserResponse } from '../../core/models/models';
     <div class="filters-bar">
       <div class="search-input filter-item">
         <input class="form-control" [(ngModel)]="search" (ngModelChange)="onSearch()"
-               placeholder="🔍  Search by name, email, phone..."/>
+               placeholder="Search by name, email, phone..."/>
       </div>
       <div class="filter-item">
         <select class="form-control" [(ngModel)]="filterRole" (change)="onSearch()">

@@ -3,19 +3,20 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MockDataService } from '../../core/services/mock-data.service';
 import { ActivityLog } from '../../core/models/models';
+import { IconComponent } from '../../shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-audit-logs',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, IconComponent],
   template: `
     <div class="page-header">
       <div class="page-title">
         <h1>Audit Logs</h1>
-        <p>Complete activity trail for every action taken in the system (MongoDB)</p>
+        <p>Complete activity trail for every action taken in the system (SQLite)</p>
       </div>
       <div class="page-actions">
-        <button class="btn btn-danger btn-sm">🗑 Clear All Logs</button>
+        <button class="btn btn-danger btn-sm"><app-icon name="trash"/> Clear All Logs</button>
         <span class="badge badge-info">{{ totalCount | number }} events recorded</span>
       </div>
     </div>
@@ -23,7 +24,7 @@ import { ActivityLog } from '../../core/models/models';
     <div class="filters-bar">
       <div class="search-input filter-item">
         <input class="form-control" [(ngModel)]="search" (ngModelChange)="onSearch()"
-               placeholder="🔍  Search by user, action, IP..."/>
+               placeholder="Search by user, action, IP..."/>
       </div>
       <div class="filter-item">
         <select class="form-control" [(ngModel)]="filterMethod" (change)="onSearch()">

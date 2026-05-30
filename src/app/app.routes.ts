@@ -56,6 +56,10 @@ export const routes: Routes = [
         path: 'otp-logs',
         loadComponent: () => import('./features/otp-logs/otp-logs.component').then(m => m.OtpLogsComponent)
       },
+      {
+        path: 'service-types',
+        loadComponent: () => import('./features/service-types/service-types.component').then(m => m.ServiceTypesComponent)
+      },
     ]
   },
   { path: '**', redirectTo: 'admin/dashboard' }

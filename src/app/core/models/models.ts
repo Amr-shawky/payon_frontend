@@ -128,7 +128,7 @@ export interface TransactionStateStat {
 
 // ===== ACTIVITY LOGS (Audit) =====
 export interface ActivityLog {
-  id: string;
+  id: number;
   timestamp: string;
   userId: string;
   fullName: string;
@@ -157,6 +157,14 @@ export interface ActivityLog {
   networkType: string;
   isAuthenticated: boolean;
   requestId: string;
+}
+
+// ===== SERVICE TYPES =====
+export interface ServiceTypeItem {
+  id: number;
+  name: string;
+  description: string;
+  isActive: boolean;
 }
 
 // ===== COMMISSIONS =====
